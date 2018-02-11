@@ -10,7 +10,7 @@ hold on
 scatter3(path(total_step, 1), path(total_step, 2), path(total_step, 3), 30, '*b');
 hold on
 %% plot path
-plot3(path(:, 1), path(:, 2), path(:, 3), 'g');
+plot3(path(:, 1), path(:, 2), path(:, 3), 'r');
 hold on;
 
 %% blocks
@@ -28,26 +28,9 @@ for i = 1 : num_block
   center_z = (min_z + max_z) / 2; size_z = max_z - min_z;
   
   rgb = block_i(7 : 9);
-  color8 = [255 0 0 0 0 0 0 0];
-  plotcube([center_x, center_y, center_z], [size_x, size_y, size_z], ...
-      [0, 0, 0], color8, 0.5, 1)
-%   x = [min_x min_x min_x min_x max_x max_x max_x max_x];
-%   y = [min_y min_y max_y max_y min_y min_y max_y max_y];
-%   z = [min_z max_z max_z min_z min_z max_z max_z min_z];
-% 
-%   index = zeros(6, 5);
-%   index(1, :) = [1 2 3 4 1];
-%   index(2, :) = [5 6 7 8 5];
-%   index(3, :) = [1 2 6 5 1];
-%   index(4, :) = [4 3 7 8 4];
-%   index(5, :) = [2 6 7 3 2];
-%   index(6, :) = [1 5 8 4 1];
-% 
-%   for k = 1 : 6
-%     plot3(x(index(k, :)), y(index(k, :)), z(index(k, :)), 'r');
-%     hold on
-%   end
-
+  color8 = [1 1 1 1 1 1 1 1];
+%   color8 = [rgb rgb rgb rgb rgb rgb rgb rgb];
+  plotcube([center_x, center_y, center_z], [size_x, size_y, size_z], [0, 0, 0], color8, 0.5, 1);
 end
 
 end
