@@ -29,120 +29,194 @@ end
 vs = map.xyzToSub(start);
 vg = map.xyzToSub(goal);
 
+% calculate the order of the start and the terminal node (x:1st domain; y:2nd domain; z:3rd domain)
+order_vs = map.xyzToInd(start);
+order_vg = map.xyzToInd(goal);
+
 % calculate the total number of nodes in the map using map.occgrid
 map_shape = size(map.occgrid);
-n_x = map_shape(1); n_y = map_shape(2); n_z = map_shape(3);
-total_num_nodes = n_x * n_y * n_z;
-
-% calculate the order of the start and the terminal node (x:1st domain; y:2nd domain; z:3rd domain)
-order_vs = ijk2Order(vs, n_x, n_y);
-order_vg = ijk2Order(vg, n_x, n_y);
+n_i = map_shape(1); n_j = map_shape(2); n_k = map_shape(3);
+total_num_nodes = n_i * n_j * n_k;
 
 %% calculate the Euclidean distance from valid node to the goal
-xx = 1 : 1 : n_x;
-yy = 1 : 1 : n_y;
-zz = 1 : 1 : n_z;
+ii = 1 : 1 : n_i;
+jj = 1 : 1 : n_j;
+kk = 1 : 1 : n_k;
 
-[Y, X, Z] = meshgrid(yy, xx, zz);  %% X is row index; Y is column index
-% heuristic array
-h = zeros(total_num_nodes, 1);
-for i = 1 : n_z
+[J, I, K] = meshgrid(jj, ii, kk);  %% X is row index; Y is column index
+%% initialization: Build a large search table with elements:{order || ijk(1:3) || xyz(4:6) || h(7) || g(8) || p(9) || vis_state(10) || collide_state(11)}
+searchTable = zeros(total_num_nodes, 11);
+
+searchTable(:, 10) = -1;  % initialize vis_state column (-1 as un-traversed)
+searchTable(:, 9) = (1: 1: total_num_nodes)'; % initialize previous_node column
+searchTable(:, 8) = inf; % initialize g_dist column with inf
+
+% set ijk, xyz, h and collide state
+for i = 1 : n_k
   % obtain ijk matrix (N x 3)
-  ijk_cur(:, :, 1) = X(:, :, 1);
-  ijk_cur(:, :, 2) = Y(:, :, 1);
-  ijk_cur(:, :, 3) = Z(:, :, i);
-  ijk_cur_unroll = reshape(ijk_cur, [n_x * n_y, 3]);
+  ijk_cur(:, :, 1) = I(:, :, 1);
+  ijk_cur(:, :, 2) = J(:, :, 1);
+  ijk_cur(:, :, 3) = K(:, :, i);
+  ijk_cur_unroll = reshape(ijk_cur, [n_i * n_j, 3]);
 
-  % obtain its corresponding orders
-  order_cur_unroll = ijk2Order(ijk_cur_unroll, n_x, n_y);
-
-  % convert into physical xyz
+  % obtain its corresponding orders and store in the searchTable
+  order_cur_unroll = ijk2Order(ijk_cur_unroll, n_i, n_j);
+  searchTable(order_cur_unroll, 1:3) = ijk_cur_unroll;
+  
+  % convert into physical xyz and store in the searchTable
   xyz_cur_unroll = map.subToXYZ(ijk_cur_unroll);
-
-  % compute Euclidean distance
+  searchTable(order_cur_unroll, 4:6) = xyz_cur_unroll;
+  
+  % compute Euclidean distance and store in the searchTable
   h_dist = sqrt(sum((xyz_cur_unroll - goal) .^ 2, 2));
-
-  % assign h value
-  h(order_cur_unroll) = h_dist;
+  searchTable(order_cur_unroll, 7) = h_dist;
+  
+  % check collide state and store in the searchTable
+  collide_list = map.collide(xyz_cur_unroll);
+  searchTable(order_cur_unroll, 11) = collide_list;
+  
 end
 
+% set g(vs) = 0
+searchTable(order_vs, 8) = 0;
 
-%% Dij Loop to obtain optimal path
-Q_vis = zeros(total_num_nodes, 1);  
-Q_vis(:) = -1;  % Q array to show whether the node i has been visited (-1: not vis; other value: store dis from vs to i)
+%% Dijkstra Loop to obtain optimal path
+fprintf('---------> Start Searching .... \n');
 
-g_dist_vs2v = inf(total_num_nodes, 1); % q array to store the min distance from vs to v (physical space)
-p_preNode = (1 : 1 : total_num_nodes)'; % p array to store the previous node of current node
-
-% initialize for the start node
-g_dist_vs2v(order_vs) = 0;
-
-% loop when vg hasn't been travsersed yet
-while true
-  % obtain the terminal node of shortest path wwithout being visited so far
-  [g_u, order_u] = min(g_dist_vs2v, [], 'omitnan');
+% loop when vg is valid and hasn't been travsersed yet
+while searchTable(order_vg, 11) == 0 && searchTable(order_vg, 10) == -1
+  % obtain the terminal node of shortest path without being visited so far
+  if astar
+    [f_u, order_u] = min(searchTable(:, 8) + searchTable(:, 7), [], 'omitnan');
+    g_u = searchTable(order_u, 8);
+  else
+    [g_u, order_u] = min(searchTable(:, 8), [], 'omitnan');
+  end
+  
+  if g_u == inf
+    break;
+  end
+  
+  fprintf('The current node order: %d || The distance from start position: %4.6f. ', order_u, g_u);
   
   % label u as visited to store its distance from vs to u
-  Q_vis(order_u) = g_u;
+  searchTable(order_u, 10) = g_u;
   % set g[order_u] = nan, as travsersed
-  g_dist_vs2v(order_u) = NaN;
+  searchTable(order_u, 8) = NaN;
 
   % check whether the current min node is the goal node
-  if order_u == order_vg
+  if searchTable(order_vg, 10) ~= -1
+    fprintf('\n*** Reach the goal position ***\n');
     break;
   end
 
   % obtain u's all valid neighbors (not visited, not within block and not outside )
-  ijk_u = order2Ijk(order_u, n_x, n_y);
-  ijk_u_neighbors = findNeighbors(ijk_u, n_x, n_y, n_z);
-
-  % exclude visited nodes
-  order_u_neighbors = ijk2Order(ijk_u_neighbors, n_x, n_y);
-  Q_nei = Q_vis(order_u_neighbors);
-  new_order_u_neighbors = order_u_neighbors(Q_nei == -1);
-
-  % convert neighbors from ijk into xyz (physical space)
-  new_ijk_u_nei = ijk_u_neighbors(Q_nei == -1, :);
-  xyz_u_neighbors = map.subToXYZ(new_ijk_u_nei);
-
-  % check position validation
-  collide_nei = map.collide(xyz_u_neighbors);
+  ijk_u = searchTable(order_u, 1 : 3);
+  [order_u_neighbors, ijk_u_neighbors] = findNeighbors(order_u, ijk_u, n_i, n_j);
   
-  valid_xyz_u_nei = xyz_u_neighbors(collide_nei == 0, :);
-  valid_ijk_u_nei = new_ijk_u_nei(collide_nei == 0, :);
-  valid_order_u_nei = new_order_u_neighbors(collide_nei == 0);
-
+  % exclude outside-boundary nodes
+  valid_i = (ijk_u_neighbors(:, 1) >= 1) & (ijk_u_neighbors(:, 1) <= n_i);
+  valid_j = (ijk_u_neighbors(:, 2) >= 1) & (ijk_u_neighbors(:, 2) <= n_j);
+  valid_k = (ijk_u_neighbors(:, 3) >= 1) & (ijk_u_neighbors(:, 3) <= n_k);
+  inbound_order_u_nei = order_u_neighbors(valid_i & valid_j & valid_k);  
+  
+  % exclude outside-boundary or visited or collided nodes
+  unvis_bool = (searchTable(inbound_order_u_nei, 10) == -1);
+  uncollide_bool = (searchTable(inbound_order_u_nei, 11) == 0);
+  valid_order_u_nei = inbound_order_u_nei(unvis_bool & uncollide_bool);
+  
+  fprintf('The current center node has %d valid neighbors. \n', size(valid_order_u_nei, 1));
+  if isempty(valid_order_u_nei)
+      continue;
+  end 
+  
+  % obtain valid neighbors' ijk to compute distance
+  valid_ijk_u_nei = searchTable(valid_order_u_nei, 1 : 3);
+  
   % compute distance between u and its valid neighbors
-  xyz_u = map.subToXYZ(ijk_u);
-  dist_u_nei = sqrt(sum((valid_xyz_u_nei - xyz_u) .^ 2, 2));
+  dist_u_nei = sum(abs(valid_ijk_u_nei - ijk_u) .* map.res_xyz, 2);
   d_vs_u_nei = g_u + dist_u_nei;
 
   % check distance
-  update_ind = (d_vs_u_nei < g_dist_vs2v(valid_order_u_nei));
+  pre_vs_u_nei = searchTable(valid_order_u_nei, 8);
+  update_ind = (d_vs_u_nei < pre_vs_u_nei);  % update only when current distance is smaller than previous
   update_order = valid_order_u_nei(update_ind);
-
+  
   % update if necessary
   if ~isempty(update_order)
     % update previous node
-    p_preNode(update_order) = order_u;
+    searchTable(update_order, 9) = order_u;
 
     % update min distance
-    g_dist_vs2v(update_order) = d_vs_u_nei(update_ind);
-
-    % add heuristics if using astar
-    if astar
-      g_dist_vs2v(update_order) = g_dist_vs2v(update_order) + h(update_order);
-    end
-  
+    searchTable(update_order, 8) = d_vs_u_nei(update_ind);
   end
 
   % update expand numbers
   num_expanded = num_expanded + 1;
 
 end
+fprintf('\n---------> Finish Searching ! \n');
 
+%% record path
+fprintf('---------> Recording the Path .... \n');
+path = [goal; path];
+cur_order = order_vg;
+while true
+  % obtain the previous order
+  pre_order = searchTable(cur_order, 9);
+
+  % if reach the start node, break
+  if pre_order == order_vs
+    path = [start; path];
+    break;
+  end
+
+  % obtain its xyz
+  pre_xyz = searchTable(pre_order, 4 : 6);
+
+  % update path
+  path = [pre_xyz; path];
+  
+  % update current order
+  cur_order = pre_order;
 end
 
+if astar
+  save './path_res/path_astar.mat' path;
+else
+  save './path_res/path_dijkstra.mat' path;
+end
+
+%% plot path and optimal distance
+plot_path(map, path);
+
+opt_dis = searchTable(order_vg, 10);
+fprintf('The found optimal path has distance: %4.6f m.\n', opt_dis);
+fprintf('Searching finished.\n');
+end
+
+
+%% Obtain neighbors, consider 6 directions up-down-right-left-forward-back
+function [neighbors_order, neighbors_ijk] = findNeighbors(order_u, ijk_u, ni, nj)
+  % 6 neighbors
+  neighbors_ijk(1, :) = ijk_u + [1, 0, 0];   % forward i-axis
+  neighbors_order(1, :) = order_u + 1;
+  
+  neighbors_ijk(2, :) = ijk_u + [-1, 0, 0];  % backward i-axis
+  neighbors_order(2, :) = order_u - 1;
+  
+  neighbors_ijk(3, :) = ijk_u + [0, 1, 0];   % right j-axis
+  neighbors_order(3, :) = order_u + ni;
+  
+  neighbors_ijk(4, :) = ijk_u + [0, -1, 0];  % left j-axis
+  neighbors_order(4, :) = order_u - ni;
+  
+  neighbors_ijk(5, :) = ijk_u + [0, 0, 1];   % up k-axis
+  neighbors_order(5, :) = order_u + ni * nj;
+  
+  neighbors_ijk(6, :) = ijk_u + [0, 0, -1];  % down k-axis
+  neighbors_order(6, :) = order_u - ni * nj;
+end
 
 
 %% obtain order index based on the ijk indices (N x 3)
@@ -150,64 +224,29 @@ function [order_list] = ijk2Order(ijk, nx, ny)
   order_list = ijk(:, 1) + (ijk(:, 2) - 1) * nx + (ijk(:, 3) - 1) * nx * ny;
 end
 
-
 %% obtain ijk index from order (revserse function of ijk2Order)
 function [ijk] = order2Ijk(order_cur, nx, ny)
-  kk = ceil(order_cur / (nx * ny));
+  kk = ceil(order_cur ./ (nx * ny));
   
   temp_n = order_cur - nx * ny * (kk - 1);
   
-  jj = ceil(temp_n / nx);
+  jj = ceil(temp_n ./ nx);
   ii = temp_n - (jj - 1) * nx;
 
   ijk = [ii, jj, kk];
 end
 
-
-%% Obtain neighbors, consider 6 directions up-down-right-left-forward-back
-function [neighbors_ijk] = findNeighbors(ijk, nx, ny, nz)
-  ind = 1;
-  % neighbor upper
-  up = ijk + [0, 0, 1];
-  if up(3) <= nz
-    neighbors_ijk(ind, :) = up;
-    ind = ind + 1;
-  end
-
-  % neighbor down
-  down = ijk + [0, 0, -1];
-  if down(3) >= 1
-    neighbors_ijk(ind, :) = down;
-    ind = ind + 1;
-  end
-
-  % neighbor right
-  right = ijk + [0, 1, 0];
-  if right(2) <= ny
-    neighbors_ijk(ind, :) = right;
-    ind = ind + 1;
-  end
-
-  % neighbor left
-  left = ijk + [0, -1, 0];
-  if left(2) >= 1
-    neighbors_ijk(ind, :) = left;
-    ind = ind + 1;
-  end
-  
-  % neighbor forward
-  forward = ijk + [1, 0, 0];
-  if forward(1) <= nx
-    neighbors_ijk(ind, :) = forward;
-    ind = ind + 1;
-  end
-
-  % neighbor back
-  back = ijk + [-1, 0, 0];
-  if back(1) >= 1
-    neighbors_ijk(ind, :) = back;
-    ind = ind + 1;
-  end
-
-
+%% own xyz to ijk
+function [ijk] = xyz2ijk(map, xyz)
+  ijk(:, 1) = floor( (xyz(:, 1) - map.bound_xyz(1)) / map.res_xyz(1) ) + 1;
+  ijk(:, 2) = floor( (xyz(:, 2) - map.bound_xyz(2)) / map.res_xyz(2) ) + 1;
+  ijk(:, 3) = floor( (xyz(:, 3) - map.bound_xyz(3)) / map.res_xyz(3) ) + 1;
 end
+
+%% own ijk to xyz
+function [xyz] = ijk2xyz(map, ijk)
+  xyz(:, 1) = (ijk(:, 1) - 1) .* map.res_xyz(1) + map.bound_xyz(1);
+  xyz(:, 2) = (ijk(:, 2) - 1) .* map.res_xyz(2) + map.bound_xyz(2);
+  xyz(:, 3) = (ijk(:, 3) - 1) .* map.res_xyz(3) + map.bound_xyz(3);
+end
+
