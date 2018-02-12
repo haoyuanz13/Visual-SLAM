@@ -35,8 +35,9 @@ order_vg = map.xyzToInd(goal);
 
 % calculate the total number of nodes in the map using map.occgrid
 % i <-> y; j <-> x; k <-> z
-map_shape = size(map.occgrid);
-n_i = map_shape(1); n_j = map_shape(2); n_k = map_shape(3);
+n_i = (map.bound_xyz(5) - map.bound_xyz(2)) ./ map.res_xyz(2); 
+n_j = (map.bound_xyz(4) - map.bound_xyz(1)) ./ map.res_xyz(1); 
+n_k = (map.bound_xyz(6) - map.bound_xyz(3)) ./ map.res_xyz(3);
 total_num_nodes = n_i * n_j * n_k;
 
 %% calculate the Euclidean distance from valid node to the goal
