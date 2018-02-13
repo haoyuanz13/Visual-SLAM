@@ -1,4 +1,4 @@
-function [path, num_expanded] = dij_demo(map, start, goal, astar)
+function [path, num_expanded] = dijkstra(map, start, goal, astar)
 % DIJKSTRA Find the shortest path from start to goal.
 %   PATH = DIJKSTRA(map, start, goal) returns an M-by-3 matrix, where each row
 %   consists of the (x, y, z) coordinates of a point on the path.  The first
@@ -22,7 +22,12 @@ num_expanded = 0;
 
 % initialization start and goal points
 if map.collide(goal) == 1 || map.collide(start) == 1
-  return
+  return;
+end
+
+% check empty map
+if isempty(map.occgrid)
+  return;
 end
 
 % ijk of the goal
@@ -30,9 +35,9 @@ ijk_goal = map.xyzToSub(goal);
 
 % calculate the total number of nodes in the map using map.occgrid
 % i <-> y; j <-> x; k <-> z
-n_i = (map.bound_xyz(5) - map.bound_xyz(2)) ./ map.res_xyz(2); 
-n_j = (map.bound_xyz(4) - map.bound_xyz(1)) ./ map.res_xyz(1); 
-n_k = (map.bound_xyz(6) - map.bound_xyz(3)) ./ map.res_xyz(3);
+n_i = ceil((map.bound_xyz(5) - map.bound_xyz(2)) / map.res_xyz(2)); 
+n_j = ceil((map.bound_xyz(4) - map.bound_xyz(1)) / map.res_xyz(1)); 
+n_k = ceil((map.bound_xyz(6) - map.bound_xyz(3)) / map.res_xyz(3));
 total_num_nodes = n_i * n_j * n_k;
 
 % calculate the order of the start and the terminal node (x:1st domain; y:2nd domain; z:3rd domain)
