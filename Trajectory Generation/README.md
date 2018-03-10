@@ -20,6 +20,16 @@ Trajectory Generation and Controller
 In the real Quad rotor, we use the __PID controller__ to control the flight vehicle given the designed trajectory. For the controller, we use either the __Back-Stepping assumption__ for linear control or __Geometric Nonlinear__ controller. 
 
 
+Execution
+---------
+All code files store in the folder _src_, feel free to execute the simulator **_runsim.m_** such that you are supposed to see the trajectory generation process. Below give clarifications for part of code files:        
+
+1. _controller_: contains controller algorithm to achieve PID control, using either linear or nonlinear control.
+2. _pathPlanning_: contains Dijkstra's algorithm and A-star to plan trajectory.
+3. _utils_: contains all helper functions.
+4. _trajectory_generator.m_: contains the algorithm to combine controller and trajectory planning.
+
+
 Results
 -------
 Below figures show two trajectory planning results in different map environments.         
