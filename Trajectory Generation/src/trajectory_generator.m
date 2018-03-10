@@ -48,40 +48,20 @@ if nargin == 4
   pre_vector = vector_ini;
 
   fused_waypoints = [];
-  seg_count = 0;
 
   % the vector of the path, calculate from the first path besides start
   for i = 2 : num_wayp - 1
     now_vector = (path0(i + 1, :) - path0(i, :)) / norm(path0(i + 1, :) - path0(i, :));
     % the current vector is same as previous one, so fuse together
     if now_vector == pre_vector  % big problem
-        continue;
-%       pre_vector = now_vector;
-% 
-%       if seg_count > 9
-%         if pre_vector == now_vector
-%           inf_num = size(fused_waypoints, 1);
-%           fused_waypoints(inf_num - seg_count + 2 : inf_num - 1,:) = [];
-%           seg_count = 0;
-%         else
-%           continue;
-%         end
-%      
-%      else
-%       seg_count = 0;
-%      end
-%     
+      continue;
+    
     else
      fused_waypoints = [fused_waypoints; path0(i, :)];
      pre_vector = now_vector;
-%      seg_count = seg_count + 1;
-     
-%      if now_vector(3) ~= 0
-%       seg_count = 0;
-%      end
     end
-  end
 
+  end
   % add two-side waypoints into the fused_waypoints set
   fused_waypoints = [path0(1, :); fused_waypoints; path0(end, :)];
   
@@ -157,12 +137,12 @@ if nargin == 4
 
   for i = 1 : num_wayp - 1
     % try to average durations
-    if seg_dist(i) < 1
+    if seg_dist(i) < 1.
       seg_cur_t = seg_dist(i);
     elseif (seg_dist(i) >= 1) && (seg_dist(i) < 5)
       seg_cur_t = seg_dist(i) / 1.5;
     else
-      seg_cur_t = seg_dist(i) / 2;
+      seg_cur_t = seg_dist(i) / 3;
     end
 
     seg_durations = [seg_durations; seg_cur_t];
