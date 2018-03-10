@@ -22,9 +22,11 @@ In the real Quad rotor, we use the __PID controller__ to control the flight vehi
 
 Results
 -------
-Below figures show two trajectory planning results in different map environments.
+Below figures show two trajectory planning results in different map environments.         
+- _Thin red curve_: planned trajectory obtained from A-star.
+- _Thick red dashed curve_: optimized trajectory.
 
-**_Traj Map1**
+**_Traj Map1_**
 <div align=center>
   <img width="560" height="420" src="./res/map1_res.jpg", alt="res map1"/>
 </div>     
