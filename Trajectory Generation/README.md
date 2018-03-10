@@ -22,7 +22,7 @@ In the real Quad rotor, we use the __PID controller__ to control the flight vehi
 
 Execution
 ---------
-All code files store in the folder _src_, feel free to execute the simulator **_runsim.m_** such that you are supposed to see the trajectory generation process. Below give clarifications for part of code files:        
+All code files store in the folder **_src_**, feel free to execute the simulator **_runsim.m_** such that you are supposed to see the trajectory generation process. Below give clarifications for part of code files:        
 
 1. _controller_: contains controller algorithm to achieve PID control, using either linear or nonlinear control.
 2. _pathPlanning_: contains Dijkstra's algorithm and A-star to plan trajectory.
