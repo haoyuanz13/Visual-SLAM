@@ -22,3 +22,5 @@ In the real Quad rotor, we use the __PID controller__ to control the flight vehi
 
 Results
 -------
+Below figures show two trajectory planning results in different map environments.
+
