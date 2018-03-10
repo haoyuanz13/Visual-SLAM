@@ -24,3 +24,12 @@ Results
 -------
 Below figures show two trajectory planning results in different map environments.
 
+**_Traj Map1**
+<div align=center>
+  <img width="450" height="450" src="./res/map1_res.jpg", alt="res map1"/>
+</div>     
+
+**_Traj Map2_**
+<div align=center>
+  <img width="450" height="450" src="./res/map2_res.png", alt="res map2"/>
+</div>   
