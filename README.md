@@ -1,4 +1,4 @@
-# Visual_SLAM
+# Visual SLAM
 Based on the collected IMU and odometry data from the real ground robot, implemented UKF to estimate a rough pose and trajectory first, then focused on feature detection and matching, using visual approaches such as linear / nonlinear Triangulation, PnP and Bundle Adjustment to update and optimize the robot pose, trajectory, and feature point cloud as well.
 
 
