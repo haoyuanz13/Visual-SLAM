@@ -38,5 +38,5 @@ All source codes with captured images are stored in the folder, **src_camCalib**
 * _**Results**_     
 All results are stored in the folder, **res_camCalib** including a detailed report _cameraCalibration_report.pdf_. For each captured view which contains a checkerboard, the corner detection result should look like the below one,
 <div align=center>
-  <img width="506" height="456" src="./res_camCalib/check1.png", alt="checkerboard"/>
+  <img width="400" height="365" src="./res_camCalib/check1.png", alt="checkerboard"/>
 </div>
