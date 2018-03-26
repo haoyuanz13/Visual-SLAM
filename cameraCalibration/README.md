@@ -19,3 +19,6 @@ For the data collection, simply capture multiple images of a planar checkerboard
     4. **DO NOT** use a camera lens with large distortion such as a GoPro camera.                    
 
   Good-qualified data can do a lot of favor for the calibration, and Matlab also provides awesome instructions in this part, which you can check out for reference [here](http://www.mathworks.com/help/vision/ug/single-camera-calibrator-app.html#bt19jdq-1).
+
+* _**Algorithm**_      
+s
