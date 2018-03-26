@@ -17,5 +17,4 @@ For the data collection, simply capture multiple images of a planar checkerboard
     2. **DO NOT** modify your images after capturing, e.g., cropping, resizing, or rotating images.    
     3. Capture the pattern from diﬀerent angles with a suﬃciently large baseline and try to cover most parts of the images with the pattern. 
     4. **DO NOT** use a camera lens with large distortion such as a GoPro camera.      
-
-Good-qualified data can do a lot of favor for the calibration, and Matlab also provides awesome instructions in this part, which you can check out for reference (here)[http://www.mathworks.com/help/vision/ug/single-camera-calibrator-app.html#bt19jdq-1].
+Good-qualified data can do a lot of favor for the calibration, and Matlab also provides awesome instructions in this part, which you can check out for reference [here](http://www.mathworks.com/help/vision/ug/single-camera-calibrator-app.html#bt19jdq-1).
