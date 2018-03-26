@@ -32,4 +32,11 @@ Typically, both intrinsic matrix _K_ and extrinsic matrix _[R, t]_ are estimated
 
 
 * _**Execution**_       
-All source codes with captured images are stored in the folder, **src_camCalib**, feel free to execute the main file **demo.m** such that you are supposed to see the iterative estimation process running and final calibration results.
+All source codes with captured images are stored in the folder, **src_camCalib**. Feel free to execute the main file **demo.m** such that you are supposed to see the iterative estimation process running and final calibration results.
+
+
+* _**Results**_     
+All results are stored in the folder, **res_camCalib** including a detailed report _cameraCalibration_report.pdf_. For each captured view which contains a checkerboard, the corner detection result should look like the below one,
+<div align=center>
+  <img width="500" height="250" src="./res_camCalib/check1.png", alt="checkerboard"/>
+</div>
