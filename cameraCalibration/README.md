@@ -20,7 +20,7 @@ For the data collection, simply capture multiple images of a planar checkerboard
 
   Good-qualified data can do a lot of favor for the calibration, and Matlab also provides awesome instructions in this part, which you can check out for reference [here](http://www.mathworks.com/help/vision/ug/single-camera-calibrator-app.html#bt19jdq-1).
 
-* _**Algorithm**_      
+* _**Algorithms**_      
 Typically, both intrinsic matrix _K_ and extrinsic matrix _[R, t]_ are estimated linearly first, and then refined by nonlinear optimization minimizing the geometric reprojection error. Overall, we estimate those parameters:
   * _Intrinsic matrix K_: fx, fy (focal length); s (slant factor); Px, Py (principle points).
   * _Extrinsic matrix [R, t]_: R (rotation matrix); t (translation vector).
@@ -29,3 +29,7 @@ Typically, both intrinsic matrix _K_ and extrinsic matrix _[R, t]_ are estimated
    we linearly compute camera parameters, K, R, and t assuming no lens distortion and then, estimate lens parameters, k1 and k2, sequentially.         
    
    Given initial values from the linear estimator, then we refine those estimations via minimizing the geometric reprojection error. We use the projection relationship between known the 3D points on the checkerboard pattern and the corresponding 2D points in each image. The 2D points are detected by a corner detector in _InitCalibration.m_ script. The script also provides the association between the 2D and 3D points. Note that we assume the 3D points are located at z = 0, a planer world.
+
+
+* _**Execution**_       
+All source codes with captured images are stored in the folder, **src_camCalib**, feel free to execute the main file **demo.m** such that you are supposed to see the iterative estimation process running and final calibration results.
