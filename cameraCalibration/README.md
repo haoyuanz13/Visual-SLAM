@@ -21,4 +21,4 @@ For the data collection, simply capture multiple images of a planar checkerboard
   Good-qualified data can do a lot of favor for the calibration, and Matlab also provides awesome instructions in this part, which you can check out for reference [here](http://www.mathworks.com/help/vision/ug/single-camera-calibrator-app.html#bt19jdq-1).
 
 * _**Algorithm**_      
-s
+Typically, both intrinsic matrix K and extrinsic matrix [R, t] are estimated linearly first, and then refined by nonlinear optimization minimizing the geometric reprojection error. 
