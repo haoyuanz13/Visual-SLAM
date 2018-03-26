@@ -22,4 +22,10 @@ For the data collection, simply capture multiple images of a planar checkerboard
 
 * _**Algorithm**_      
 Typically, both intrinsic matrix _K_ and extrinsic matrix _[R, t]_ are estimated linearly first, and then refined by nonlinear optimization minimizing the geometric reprojection error. Overall, we estimate those parameters:
-1. 
+  * _Intrinsic matrix K_: fx, fy (focal length); s (slant factor); Px, Py (principle points).
+  * _Extrinsic matrix [R, t]_: R (rotation matrix); t (translation vector).
+  * _Distortion parameters k_: k1; k2.
+  
+   we linearly compute camera parameters, K, R, and t assuming no lens distortion and then, estimate lens parameters, k1 and k2, sequentially.         
+   
+   Given initial values from the linear estimator, then we refine those estimations via minimizing the geometric reprojection error. We use the projection relationship between known the 3D points on the checkerboard pattern and the corresponding 2D points in each image. The 2D points are detected by a corner detector in _InitCalibration.m_ script. The script also provides the association between the 2D and 3D points. Note that we assume the 3D points are located at z = 0, a planer world.
