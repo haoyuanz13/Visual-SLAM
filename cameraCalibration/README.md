@@ -13,4 +13,5 @@ For the data collection, simply capture multiple images of a planar checkerboard
   Measure the size of your own checkerboard square in mm (just a recommended unit) such that you can obtain the 3D coordinate for every corner in the checkerboard.    
   * _Images Capture_    
   Capture multiple imgaes of the checkerboard using your target camera, 10-20 images are recommended for the more robust calibration. In addtion, below tips might be helpful.
-  1. Disable auto-focus. • Do not change the zoom settings while capturing. • Do not modify your images, e.g., cropping, resizing, or rotating images. • Capture the pattern from diﬀerent angles with a suﬃciently large baseline. • Cover most parts of the images with the pattern. • Do not use a camera lens with large distortion such as a GoPro camera.
+    1. Disable auto-focus.  
+    2. Do not change the zoom settings while capturing. • Do not modify your images, e.g., cropping, resizing, or rotating images. • Capture the pattern from diﬀerent angles with a suﬃciently large baseline. • Cover most parts of the images with the pattern. • Do not use a camera lens with large distortion such as a GoPro camera.
