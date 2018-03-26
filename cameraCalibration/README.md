@@ -21,6 +21,4 @@ For the data collection, simply capture multiple images of a planar checkerboard
   Good-qualified data can do a lot of favor for the calibration, and Matlab also provides awesome instructions in this part, which you can check out for reference [here](http://www.mathworks.com/help/vision/ug/single-camera-calibrator-app.html#bt19jdq-1).
 
 * _**Algorithm**_      
-Typically, both intrinsic matrix _K_ and extrinsic matrix _[R, t]_ are estimated linearly first, and then refined by nonlinear optimization minimizing the geometric reprojection error. For each $\omega$
-
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+Typically, both intrinsic matrix _K_ and extrinsic matrix _[R, t]_ are estimated linearly first, and then refined by nonlinear optimization minimizing the geometric reprojection error. 
