@@ -7,5 +7,5 @@ We aim to estimate the intrinsic (K) and extrinsic (R, t) matrices for a hand-ha
 
 * _**Data Collection**_           
 For the data collection, simply capture multiple images of a planar checkerboard pattern (known 3D points). More specifically, the pipeline shows below:
-  *  Get a checkerboard         
-  Print out the predeﬁned checkerboard pattern (use open checkerboardPattern.pdf to show the pattern in MATLAB). Note that the checkerboard pattern is made of odd number of squares in one side and even number of squares on the other side to disambiguate the orientation of the pattern. 
+  *  _Get a checkerboard_         
+  You can use a physical checkerboard if you can find one. Alternatively, print out the predeﬁned checkerboard pattern (use open checkerboardPattern.pdf to show the pattern in MATLAB). Note that the checkerboard pattern is made of odd number of squares in one side and even number of squares on the other side to disambiguate the orientation of the pattern. 
