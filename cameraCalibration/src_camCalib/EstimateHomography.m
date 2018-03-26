@@ -1,4 +1,4 @@
-function H = EstimateHomography(x_to, y_to, X_from, Y_from)
+function [H] = EstimateHomography(x_to, y_to, X_from, Y_from)
 % Compute the homography matrix from source(X, Y) to destination(x, y)
 %
 %    x, y are coordinates of destination points
@@ -23,3 +23,5 @@ h = V(:, 9);
 H = reshape(h,3,3)';
 
 H = H ./ H(3, 3); % for calibration!
+
+end
