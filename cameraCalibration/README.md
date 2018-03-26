@@ -40,3 +40,11 @@ All results are stored in the folder, **res_camCalib** including a detailed repo
 <div align=center>
   <img width="400" height="365" src="./res_camCalib/check1.png", alt="checkerboard"/>
 </div>
+
+The calibration results are below (the left-most one is a perspective view, followed by one top view and two side views)
+<p >
+ <img src = "./res_camCalib/pattern1.png?raw=true" width="346" height="351">
+ <img src = "./res_camCalib/pattern3.png?raw=true" width="346" height="351">
+ <img src = "./res_camCalib/pattern2.png?raw=true" width="346" height="351">
+ <img src = "./res_camCalib/pattern4.png?raw=true" width="346" height="351">
+</p>
