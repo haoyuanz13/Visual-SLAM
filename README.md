@@ -6,6 +6,10 @@ Trajectory Generation
 ---------------------
 The package mainly implements the trajectory planning and generation algorithm for the real Quadrotor given the map environment, start and goal positions, obstacles and flight state constraints information.
 
+Camera Calibration
+------------------
+The package mainly contains algorithms for the camera calibration either for a hand-handled camera or a monocular camera equipped on a real Quadrotor, using a checkerboard or April Tags respectively.
+
 
 Strcuture from Motion
 ---------------------
