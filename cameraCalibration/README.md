@@ -5,4 +5,4 @@ Hand-handled Camera Calibration
 -------------------------------
 We aim to estimate the intrinsic (K) and extrinsic (R, t) matrices for a hand-handled camera using a planer world space(e.g. checkerboard) and multiple views, which is also called as _camera calibration_. 
 
-* asd
+_* Data Collection_
