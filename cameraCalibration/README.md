@@ -3,4 +3,6 @@ In this package, we mainly implement the **Camera Calibration** algorithm for bo
 
 Hand-handled Camera Calibration
 -------------------------------
-We aim to estimate the intrinsic and extrinsic matrices for a hand-handled camera, which is also called as _camera calibration_. 
+We aim to estimate the intrinsic (K) and extrinsic (R, t) matrices for a hand-handled camera using a planer world space(e.g. checkerboard) and multiple views, which is also called as _camera calibration_. 
+
+* asd
