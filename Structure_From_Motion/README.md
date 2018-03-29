@@ -13,6 +13,16 @@ http://ieeexplore.ieee.org/document/6619046/
 
 Data
 ----
+All data for 3D reconstruction are stored in the folder **_data_**, including:
+* _Images_: a series of images captured by the camera and can guarantee each of them have some common regions.
+* _matching txt file_: contains correspondeces information for each image frame.
+
+Also, feel free to detect your own features if those are not enough or optimal to you.
+
+
+Algorithms
+----------
+
 
 This package is mainly designed to check the feasibility and accracy of visual SLAM algorithm once the feature detection is good. Add the package to your catkin workspace as well as its dependencies, execute the 'demo.m' in src folder to check the accuracy of the visual SLAM.
 
