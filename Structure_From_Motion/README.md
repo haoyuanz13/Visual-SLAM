@@ -9,7 +9,7 @@ The _Structure From Motion(SFM)_ is popular used in most Visual SLAM and AR algo
 
 Typically, SFM is a nonlinear optimization problem, trying to minimize the **_reprojection error_** from 3D point cloud and corresponding 2D features. In addition, its vision pipeline is also be popular used in the update/measurement step of the modern Vision Odometry/Vision Inertial Odometry algorithm.
 
-http://ieeexplore.ieee.org/document/6619046/
+
 
 Data
 ----
@@ -26,6 +26,15 @@ The pipeline is straightforward, below shows the pipeline.
 <div align=center>
   <img width="600" height="420" src="./sfm_pipeline.png", alt="sfm pipeline"/>
 </div>   
+
+More specifically:
+1. Apply _RANSAC_ to filter out outliers for better geometry estimation.
+2. Set the first camera frame as the global origin such that all following ones are estimated respected to the first camera.
+3. Based on filtered inliers, use **_first two frames_** combined with Fundamental, Essential matrix and Triangulation to initialize the 3D point cloud as well as the second camera state.
+4. For each coming camera frame, use existed 3D point cloud and PnP to estimate its state, then use Triangulation to expand the 3D point cloud, finally, use Bundle Adjustement to refine all existed 3D points and camera(in order to make the algorithm efficient and optimal, the local Bundle Adjustment is recommended).
+
+Feel free to check the detailed algorithm via this paper: [Joint Detection, Tracking and Mapping by Semantic Bundle Adjustment](http://ieeexplore.ieee.org/document/6619046/).
+
 
 This package is mainly designed to check the feasibility and accracy of visual SLAM algorithm once the feature detection is good. Add the package to your catkin workspace as well as its dependencies, execute the 'demo.m' in src folder to check the accuracy of the visual SLAM.
 
