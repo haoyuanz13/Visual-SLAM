@@ -52,10 +52,27 @@ Two folders to store results:
 * **_3D_map_res_** stores the 3D point cloud map reconstruction as well as the camera trajectory with poses. 
 
 Here post the reconstructed 3D point cloud (from multiple views) and estimated camera trajectory.
-<div align=center>
-  <img width="800" height="420" src="./3D_map_res/Result_3D_PCview.jpg", alt="3d pc"/>
-</div>   
+* **_3D Perspective View_**
+  <div align=center>
+    <img width="800" height="420" src="./3D_map_res/Result_3D_PCview.jpg", alt="3d pc"/>
+  </div>   
 
+* **_Left Side View_**
+  <div align=center>
+    <img width="800" height="420" src="./3D_map_res/side_viewPC.jpg", alt="3d pc"/>
+  </div>   
+
+* **_Right Side View_**
+  <div align=center>
+    <img width="800" height="420" src="./3D_map_res/side_view2PC.jpg", alt="3d pc"/>
+  </div>   
+
+* **_Top View_**
+  <div align=center>
+    <img width="800" height="420" src="./3D_map_res/top_viewPC.jpg", alt="3d pc"/>
+  </div>  
+  
+  
 Report
 ------
 For more algorithm explanation, please feel free to take a look at the report.
