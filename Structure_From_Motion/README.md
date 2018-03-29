@@ -76,7 +76,12 @@ Here post the reconstructed 3D point cloud (from multiple views) and estimated c
   <div align=center>
     <img width="396" height="318" src="./3D_map_res/cameraPose3D.png", alt="camera pose"/>
   </div>   
-  
+
+
+  <div align=center>
+    <img width="396" height="318" src="./data/image0000001.bmp", alt="camera pose"/>
+  </div>   
+
 Report
 ------
-For more algorithm explanation, please feel free to take a look at the report.
+For more detailed algorithm explanation and results analyses, feel free to check the **_Report.pdf_**.
