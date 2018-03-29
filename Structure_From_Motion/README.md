@@ -51,6 +51,16 @@ Two folders to store results:
 * **_feature_match_res_:** stores the results of feafure detection and matching, as well as fundamental matrix estimation.
 * **_3D_map_res_** stores the 3D point cloud map reconstruction as well as the camera trajectory with poses. 
 
+Below show 6 frames of the captured images:
+<p >
+  <img src = "./data/image0000001.bmp.?raw=true" width="210" height="160">
+  <img src = "./data/image0000002.bmp.?raw=true" width="210" height="160">
+  <img src = "./data/image0000003.bmp.?raw=true" width="210" height="160">
+  <img src = "./data/image0000004.bmp.?raw=true" width="210" height="160">
+  <img src = "./data/image0000005.bmp.?raw=true" width="210" height="160">
+  <img src = "./data/image0000006.bmp.?raw=true" width="210" height="160">
+</p>
+
 Here post the reconstructed 3D point cloud (from multiple views) and estimated camera trajectory.
 * **_3D Perspective View_**
   <div align=center>
@@ -76,11 +86,7 @@ Here post the reconstructed 3D point cloud (from multiple views) and estimated c
   <div align=center>
     <img width="396" height="318" src="./3D_map_res/cameraPose3D.png", alt="camera pose"/>
   </div>   
-
-
-  <div align=center>
-    <img width="396" height="318" src="./data/image0000001.bmp", alt="camera pose"/>
-  </div>   
+  
 
 Report
 ------
