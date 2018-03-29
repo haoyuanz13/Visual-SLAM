@@ -59,19 +59,23 @@ Here post the reconstructed 3D point cloud (from multiple views) and estimated c
 
 * **_Left Side View_**
   <div align=center>
-    <img width="800" height="420" src="./3D_map_res/side_viewPC.jpg", alt="3d pc"/>
+    <img width="800" height="420" src="./3D_map_res/side_viewPC.jpg", alt="3d pc 1"/>
   </div>   
 
 * **_Right Side View_**
   <div align=center>
-    <img width="800" height="420" src="./3D_map_res/side_view2PC.jpg", alt="3d pc"/>
+    <img width="800" height="420" src="./3D_map_res/side_view2PC.jpg", alt="3d pc 2"/>
   </div>   
 
 * **_Top View_**
   <div align=center>
-    <img width="800" height="420" src="./3D_map_res/top_viewPC.jpg", alt="3d pc"/>
+    <img width="800" height="420" src="./3D_map_res/top_viewPC.jpg", alt="3d pc 3"/>
   </div>  
-  
+
+* **_Camera Trajectory_**
+  <div align=center>
+    <img width="590" height="474" src="./3D_map_res/cameraPose3D.png", alt="camera pose"/>
+  </div>   
   
 Report
 ------
