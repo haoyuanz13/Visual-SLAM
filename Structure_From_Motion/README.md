@@ -53,7 +53,7 @@ Two folders to store results:
 
 Here post the reconstructed 3D point cloud (from multiple views) and estimated camera trajectory.
 <div align=center>
-  <img width="600" height="420" src="./3D_map_res/Result_3D_PCview.jpg", alt="3d pc"/>
+  <img width="800" height="420" src="./3D_map_res/Result_3D_PCview.jpg", alt="3d pc"/>
 </div>   
 
 Report
