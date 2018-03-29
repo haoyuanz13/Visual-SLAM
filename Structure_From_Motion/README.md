@@ -53,12 +53,12 @@ Two folders to store results:
 
 Below show 6 frames of the captured images:
 <p >
-  <img src = "./data/image0000001.bmp?raw=true" width="140" height="110">
-  <img src = "./data/image0000001.bmp?raw=true" width="140" height="110">
-  <img src = "./data/image0000001.bmp?raw=true" width="140" height="110">
-  <img src = "./data/image0000001.bmp?raw=true" width="140" height="110">
-  <img src = "./data/image0000001.bmp?raw=true" width="140" height="110">
-  <img src = "./data/image0000001.bmp?raw=true" width="140" height="110">
+  <img src = "./data/image0000001.bmp?raw=true" width="140" height="105">
+  <img src = "./data/image0000002.bmp?raw=true" width="140" height="105">
+  <img src = "./data/image0000003.bmp?raw=true" width="140" height="105">
+  <img src = "./data/image0000004.bmp?raw=true" width="140" height="105">
+  <img src = "./data/image0000005.bmp?raw=true" width="140" height="105">
+  <img src = "./data/image0000006.bmp?raw=true" width="140" height="105">
 </p>
 
 Here post the reconstructed 3D point cloud (from multiple views) and estimated camera trajectory.
