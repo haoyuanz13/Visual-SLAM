@@ -28,19 +28,22 @@ The pipeline is straightforward, below shows the pipeline.
 </div>   
 
 More specifically:
-1. Apply _RANSAC_ to filter out outliers for better geometry estimation.
+1. Apply **_RANSAC_** to filter out outliers for better geometry estimation.
 2. Set the first camera frame as the global origin such that all following ones are estimated respected to the first camera.
-3. Based on filtered inliers, use **_first two frames_** combined with Fundamental, Essential matrix and Triangulation to initialize the 3D point cloud as well as the second camera state.
-4. For each coming camera frame, use existed 3D point cloud and PnP to estimate its state, then use Triangulation to expand the 3D point cloud, finally, use Bundle Adjustement to refine all existed 3D points and camera(in order to make the algorithm efficient and optimal, the local Bundle Adjustment is recommended).
+3. Based on filtered inliers, use **_first two frames_** combined with _Fundamental_, _Essential matrix_ and _Triangulation_ to **_initialize_** the 3D point cloud as well as the second camera state.
+4. For each coming camera frame, use existed 3D point cloud and _PnP_ to estimate its state, then use Triangulation to expand the 3D point cloud, finally, use _Bundle Adjustement_ to refine all existed 3D points and camera(in order to make the algorithm efficient and optimal, the local Bundle Adjustment is recommended).
 
 Feel free to check the detailed algorithm via this paper: [Joint Detection, Tracking and Mapping by Semantic Bundle Adjustment](http://ieeexplore.ieee.org/document/6619046/).
 
 
-This package is mainly designed to check the feasibility and accracy of visual SLAM algorithm once the feature detection is good. Add the package to your catkin workspace as well as its dependencies, execute the 'demo.m' in src folder to check the accuracy of the visual SLAM.
+Execution
+---------
+All source codes are stored in the folder **_src_**. It includes two parts code set:
+* One part completes feature matching, cleaning and updating for optimization problem;
+* The other part implements visual optimization problems such as linear and nonlinear triangulaion, PnP and bundle adjustment. For nonlinear problem, in addition, you can find all Jacobian matrix implementation to improve the speed and accuracy of algorithm.      
 
-Package clarification
-------------------------
-The src folder includes two parts code set, one part completes feature matching, cleaning and updating for optimization problem, the other part implements visual optimization problems such as linear and nonlinear triangulaion, PnP and bundle adjustment. For nonlinear problem, in addition, you can find all Jacobian matrix implementation to improve the speed and accuracy of algorithm.
+**_Note:_** The function of each file can refer to its name, for instance, the file **_GetInliersRANSAC.m_** is to filter out outliers and keep inliers using RANSAC. And the **_demo.m_** is a fused file which can help check the whole pipeline and training process.
+
 
 Results
 -------
