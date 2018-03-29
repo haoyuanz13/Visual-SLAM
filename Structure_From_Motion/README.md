@@ -47,7 +47,14 @@ All source codes are stored in the folder **_src_**. It includes two parts code 
 
 Results
 -------
-Two result folders, one shows the accuracy and function of feafure detection and matching, as well as fundamental matrix estimation; the other shows the 3D point cloud map construction as well as robot trajectory with camera pose. 
+Two folders to store results:
+* **_feature_match_res_:** stores the results of feafure detection and matching, as well as fundamental matrix estimation.
+* **_3D_map_res_** stores the 3D point cloud map reconstruction as well as the camera trajectory with poses. 
+
+Here post the reconstructed 3D point cloud (from multiple views) and estimated camera trajectory.
+<div align=center>
+  <img width="600" height="420" src="./3D_map_res/Result_3D_PCview.jpg", alt="3d pc"/>
+</div>   
 
 Report
 ------
