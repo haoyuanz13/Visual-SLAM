@@ -74,7 +74,7 @@ Here post the reconstructed 3D point cloud (from multiple views) and estimated c
 
 * **_Camera Trajectory_**
   <div align=center>
-    <img width="590" height="474" src="./3D_map_res/cameraPose3D.png", alt="camera pose"/>
+    <img width="396" height="318" src="./3D_map_res/cameraPose3D.png", alt="camera pose"/>
   </div>   
   
 Report
