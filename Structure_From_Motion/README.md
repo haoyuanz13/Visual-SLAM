@@ -1,3 +1,5 @@
+# Structure From Motion (3D Structure Reconstruction)
+
 Usage
 -----
 This package is mainly designed to check the feasibility and accracy of visual SLAM algorithm once the feature detection is good. Add the package to your catkin workspace as well as its dependencies, execute the 'demo.m' in src folder to check the accuracy of the visual SLAM.
