@@ -45,7 +45,7 @@ All source codes are stored in the folder **_src_**. It includes two parts code 
 **_Note:_** The function of each file can refer to its name, for instance, the file **_GetInliersRANSAC.m_** is to filter out outliers and keep inliers using RANSAC. And the **_demo.m_** is a fused file which can help check the whole pipeline and training process.
 
 
-Results
+Results and Report
 -------
 Two folders to store results:
 * **_feature_match_res_:** stores the results of feafure detection and matching, as well as fundamental matrix estimation.
@@ -87,7 +87,6 @@ Here post the reconstructed 3D point cloud (from multiple views) and estimated c
     <img width="396" height="318" src="./3D_map_res/cameraPose3D.png", alt="camera pose"/>
   </div>   
   
+  
+**_Report_:** For more detailed algorithm explanation and results analyses, feel free to check the **_Report.pdf_**.
 
-Report
-------
-For more detailed algorithm explanation and results analyses, feel free to check the **_Report.pdf_**.
