@@ -24,7 +24,7 @@ Algorithms
 ----------
 The pipeline is straightforward, below shows the pipeline.
 <div align=center>
-  <img width="560" height="420" src="./sfm_pipeline.png", alt="sfm pipeline"/>
+  <img width="600" height="420" src="./sfm_pipeline.png", alt="sfm pipeline"/>
 </div>   
 
 This package is mainly designed to check the feasibility and accracy of visual SLAM algorithm once the feature detection is good. Add the package to your catkin workspace as well as its dependencies, execute the 'demo.m' in src folder to check the accuracy of the visual SLAM.
