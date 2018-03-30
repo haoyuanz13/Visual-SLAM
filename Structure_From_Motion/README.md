@@ -51,7 +51,7 @@ Two folders to store results:
 * **_feature_match_res_:** stores the results of feafure detection and matching, as well as fundamental matrix estimation.
 * **_3D_map_res_** stores the 3D point cloud map reconstruction as well as the camera trajectory with poses. 
 
-Below show 6 frames of the captured images:
+Below show 6 frames of the captured images _(From the 1st frame to 6th frame)_:
 <p >
   <img src = "./data/image0000001.bmp?raw=true" width="140" height="105">
   <img src = "./data/image0000002.bmp?raw=true" width="140" height="105">
