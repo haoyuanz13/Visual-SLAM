@@ -57,3 +57,6 @@ Results
 All results are stored in the folder **_final_results_**, which contains the final results of estimated trajectory and 3D point cloud. Below show a simple feature matching result and several generated maps.
 
 * **_Feature Matching Performance_**
+  <div align=center>
+    <img width="600" height="420" src="./final_results/featureMatching.png", alt="feature matching"/>
+  </div>   
