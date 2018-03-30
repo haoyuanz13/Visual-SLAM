@@ -52,8 +52,8 @@ All source codes are stored in the folder **_src_**, and it separates into two s
     * _demo_visual_update.py_: fused all work and achieved whole structure. Each time a figure pops up to indicate a completed step. Close it to proceed. 
     
 
-Results
--------
+Results and Report
+------------------
 All results are stored in the folder **_final_results_**, which contains the final results of estimated trajectory and 3D point cloud. For detailed algorithm and results analyses, feel free to check the file **_Report.pdf_**.      
 
 Below show a simple feature matching result and several generated maps.
