@@ -58,5 +58,5 @@ All results are stored in the folder **_final_results_**, which contains the fin
 
 * **_Feature Matching Performance_**
   <div align=center>
-    <img width="600" height="420" src="./final_results/featureMatching.png", alt="feature matching"/>
+    <img width="800" height="800" src="./final_results/featureMatching.png", alt="feature matching"/>
   </div>   
