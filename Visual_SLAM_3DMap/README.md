@@ -54,7 +54,9 @@ All source codes are stored in the folder **_src_**, and it separates into two s
 
 Results
 -------
-All results are stored in the folder **_final_results_**, which contains the final results of estimated trajectory and 3D point cloud. Below show a simple feature matching result and several generated maps.
+All results are stored in the folder **_final_results_**, which contains the final results of estimated trajectory and 3D point cloud. For detailed algorithm and results analyses, feel free to check the file **_Report.pdf_**.      
+
+Below show a simple feature matching result and several generated maps.
 
 * **_Feature Matching Performance_**
   <div align=center>
@@ -68,5 +70,5 @@ All results are stored in the folder **_final_results_**, which contains the fin
 
 * **_3D Map (Top View)_**
   <div align=center>
-    <img width="800" height="420" src="./final_results/traj_pc_linearT.png", alt="3D PC top"/>
+    <img width="640" height="300" src="./final_results/traj_pc_linearT.png", alt="3D PC top"/>
   </div>   
