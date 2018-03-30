@@ -1,5 +1,15 @@
 # Visual SLAM using Monocular Camera (Particle Filter Based)
 
+Introduction
+------------
+We implement this visual SLAM based on the common SLAM using _Particle Filter_ and a lidar sensor data for update. Here, instead of using scan information from lidar data, we choose visual information to update the pose of camera as well as the 3D point cloud with respect to the global frame.       
+
+Eventually, we expect to build a 3D map with correct estimated trajectory of robot and 3D point cloud respected to the physical world.
+
+Data
+----
+All data are collected using a real ground robot in an indoor lab environment. The folder **_data_** stores all collected images, however, due to the size capacity, I didn't upload other collected data such as Odometry, IMU. If you are interested in them, feel free to e-mail me ([Mail Address](haoyuanz0827@gmail.com)) 
+
 Usage
 -----
 The package achieves Visual Slam and 3D map building using only monocular camera, the base strcuture refers to two packages: 
