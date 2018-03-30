@@ -54,6 +54,6 @@ All source codes are stored in the folder **_src_**, and it separates into two s
 
 Results
 -------
-All results are stored in the folder **_final_results_**, which contains the final results of estimated trajectory and 3D point cloud. Below show a simple feature tracking result and several generated maps.
+All results are stored in the folder **_final_results_**, which contains the final results of estimated trajectory and 3D point cloud. Below show a simple feature matching result and several generated maps.
 
-* **_Feature Tracking Performance_**
+* **_Feature Matching Performance_**
