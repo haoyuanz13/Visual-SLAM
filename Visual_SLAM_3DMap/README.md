@@ -65,3 +65,8 @@ All results are stored in the folder **_final_results_**, which contains the fin
   <div align=center>
     <img width="640" height="480" src="./final_results/PC_after_bundle.png", alt="3D PC"/>
   </div>   
+
+* **_3D Map (Top View)_**
+  <div align=center>
+    <img width="800" height="420" src="./final_results/traj_pc_linearT.png", alt="3D PC top"/>
+  </div>   
