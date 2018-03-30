@@ -58,5 +58,10 @@ All results are stored in the folder **_final_results_**, which contains the fin
 
 * **_Feature Matching Performance_**
   <div align=center>
-    <img width="800" height="800" src="./final_results/featureMatching.png", alt="feature matching"/>
+    <img width="600" height="600" src="./final_results/featureMatching.png", alt="feature matching"/>
+  </div>   
+
+* **_3D Map (Perspective View)_**
+  <div align=center>
+    <img width="640" height="480" src="./final_results/PC_after_bundle.png", alt="3D PC"/>
   </div>   
