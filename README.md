@@ -8,7 +8,7 @@ The package mainly implements the trajectory planning and generation algorithm f
 
 Camera Calibration
 ------------------
-The package mainly contains algorithms for the camera calibration either for a hand-handled camera or a monocular camera equipped on a real Quadrotor, using a checkerboard or April Tags respectively.
+The package mainly contains algorithms for the camera calibration either for a hand-handled camera, and later will apply that to a monocular camera equipped on a real Quadrotor, using a April Tags space.
 
 
 Strcuture from Motion
