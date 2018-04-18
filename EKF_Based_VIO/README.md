@@ -13,8 +13,9 @@ Below shows the map, since we know the size of each Tag and the arranged positio
 
 In addition, for each AprilTag, we define its four corner order as below, which can also help to pre-process data for the vision-based update step.
 <div align=center>
-  <img width="400" height="400" src="./docs/AprilTag.png", alt="April Tag">
+  <img width="200" height="200" src="./docs/AprilTag.png", alt="April Tag">
 </div>
+
 
 Data
 ----
