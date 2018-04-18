@@ -13,6 +13,8 @@ The package mainly contains algorithms for the camera calibration either for a h
 The package implements feature matching and visual optimization algorithms such as linear and nonliear triangulation, PnP and bundle adjustment,
 to verify the fesibility and accuracy of the visual slam algorithm when the feature detection result is good. The package plays an important role for the following *Visual Slam* package.
 
+* **_EKF based VIO_**        
+The package mainly implements the VIO using EKF to estimate the state of a flying Quadrotor.
 
 * **_Visual SLAM 3D_**                
 The package implements visual slam using the monocular camera, and built a 3D feature point-cloud map as well as showing the walking robot trajectory.
