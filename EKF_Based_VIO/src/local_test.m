@@ -53,7 +53,7 @@ args.useRANSAC = false;  % represent whether using RANSAC
 
 
 %% read in data
-dataset = load('studentdata9.mat');
+dataset = load('demo2.mat');
 vicon = dataset.vicon;
 time = dataset.time;
 sensor_set = dataset.data;
