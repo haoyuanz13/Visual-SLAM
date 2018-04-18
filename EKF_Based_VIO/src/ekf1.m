@@ -81,10 +81,7 @@ if isempty(t_pre)
 %% the iterative processing
 else
   t_cur = vic.t;  % assign current time stamp
-  
-  
-  
-  
+
   % Motion model (Vicon based)
   if ~isempty(vic)
     Qt = eye(6);  % covariance matrix of motion model noise
