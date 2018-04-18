@@ -19,7 +19,19 @@ In addition, for each AprilTag, we define its four corner order as below, which 
 
 Data
 ----
-All data are collected via a Quadrotor onboard sensor, including time, body frame linear acceleration and velocity, captured images.
+All data are collected via a Quadrotor onboard sensor, including time, body frame linear acceleration and velocity, captured images. The format of the sensor data struct is as follows:
+  1. Time stamp (**t**) in seconds.
+  2. The ID of every AprilTag that is observed in the image (**id**).
+  3. All detected corners and Tags' center positions in the image frame (**p0**, **p1**, **p2**, **p3**, **p4**).
+  4. Rectified image (**img**).
+  5. IMU data with Euler angles (**rpy**), body frame angular velocity (**omg**) and linear acceelration (**acc**).
+
+The data file also contains the **Vicon** data taken at 100Hz, which serve as the ground truth measurements, its format is:
+<div align=center>
+  <img width="200" height="20" src="./docs/viconData.png", alt="vicon">
+</div>
+
+Note that for some packets no tags or valid features are observed, such that we cannot implement the vision-based estimation for update. However, as the IMU runs at a faster rate than the camera, the EKF will allow us to have somewhat accurate state estimates in these situations.
 
 
 Algorithms
