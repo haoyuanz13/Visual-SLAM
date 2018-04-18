@@ -62,4 +62,15 @@ Also, you are supposed to see the processing estimation errors in the engine as 
 
 Results
 -------
-All experiment results are stored in the folder **res**
+All experiment results are stored in the folder **res**, below show several test results compared with Vicon data.    
+<p >
+  <img src = "./res/test_pos.jpg?raw=true" width="280" height="240">
+  <img src = "./res/test_quat.jpg?raw=true" width="280" height="240">
+  <img src = "./res/test_vel.jpg?raw=true" width="280" height="240">
+</p>
+
+Below table shows the overall estimation errors.
+<div align=center>
+  <img width="800" height="400" src="./res/testRes.png", alt="Test results">
+</div>
+
