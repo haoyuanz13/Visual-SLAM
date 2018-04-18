@@ -28,7 +28,7 @@ All data are collected via a Quadrotor onboard sensor, including time, body fram
 
 The data file also contains the **Vicon** data taken at 100Hz, which serve as the ground truth measurements, its format is:
 <div align=center>
-  <img width="200" height="20" src="./docs/viconData.png", alt="vicon">
+  <img width="400" height="40" src="./docs/viconData.png", alt="vicon">
 </div>
 
 Note that for some packets no tags or valid features are observed, such that we cannot implement the vision-based estimation for update. However, as the IMU runs at a faster rate than the camera, the EKF will allow us to have somewhat accurate state estimates in these situations.
