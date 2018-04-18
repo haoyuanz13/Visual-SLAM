@@ -51,3 +51,15 @@ Below links contain more detailed algorithms and analyses:
 * [Vision-based Velocity Estimation](https://onenote.com/webapp/pages?token=N0PGRP6E_z3u43enbeXuKXOOPH4arlqz-FvChRHStU6B74jt0R1IlyJUJEte9LZsb-Www7XzOupSRHTNLcKqjspZn3EJ08AX0&id=636596633659952379)
 * [Extend Kalman Filter](https://onenote.com/webapp/pages?token=Jcdx-FaWIbaxtKcLiOtszNan6p9cjoPxCgq-OE33hrwNysNS3FQjVMtwXzpeTpGtyu0-C0dL0QObLckTvuMaH-Rbit5ijGYH0&id=636596634171384977)
 * [Comparison between EKF, UKF and PF](https://onenote.com/webapp/pages?token=2W6JQWqSyvIaHGd96X4oW9TEd_GEcQkspMNWYjw5a_FyzIv0JEzj3R2Cs4UDzJLp600UnUWDPjWp8AhGB-51nLn6HKKDQ2fO0&id=636596634616564245)
+
+Execution
+---------
+All source code are stored in the folder **src**. Include all necessary directories, and
+* **local_test.m** executes the **ekf1.m** which only estimates the pose (x, y, z, vx, vy, vz) of a Quadrotor.
+* **local_test_2.m** executes the **ekf2.m** which includes the estimation of the linear velocity, such that its return is a vector contains all state information (x, y, z, vx, vy, vz, vx, vy, vz) at each time stamp.
+
+Also, you are supposed to see the processing estimation errors in the engine as well as several plots once completing the estimation.
+
+Results
+-------
+All experiment results are stored in the folder **res**
