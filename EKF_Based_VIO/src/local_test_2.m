@@ -52,7 +52,7 @@ args.linearEstimator = false;  % approach index to estimate pose linearly
 
 
 %% read in data
-dataset = load('studentdata1.mat');
+dataset = load('demo2.mat');
 vicon = dataset.vicon;
 time = dataset.time;
 sensor_set = dataset.data;
