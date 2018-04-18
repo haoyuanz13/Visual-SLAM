@@ -36,4 +36,18 @@ Note that for some packets no tags or valid features are observed, such that we 
 
 Algorithms
 ----------
-The algorithm mainly refers to the _Extended Kalman Filter (EKF)_, use observed data (e.g. body frame acceleration or angular velocity from the onboard IMU) to complete the state prediction, and then use detected visual features (e.g. April Tags) to update. 
+The algorithm mainly refers to the _Extended Kalman Filter (EKF)_:
+* **Motion Model**         
+  In the motion model step, we use the observed data (e.g. body frame acceleration or angular velocity from the onboard IMU) to predict the state of a Quadrotor, and the covariance of its distribution. As we know, EKF linearize the model as well as the distribution of states, here we use Gaussian distribution to approximate all states and the noise.
+
+* **Measurement Model**        
+  In the measurement step, we use the detected visual features (e.g. April Tags) to update states and covariance. More specifically, 
+  * For the Quadrotor _pose estimation_ (x, y, z, roll, pitch, yaw), we implement the Homography estimation and decomposition or linear PnP.
+  * For the Quadrotor _velocity estimation_ (vx, vy, vz), we use the optical flow, KLT feature tracker and Motion Field Equations. 
+
+Below links contain more detailed algorithms and analyses:
+* [PnP: Perspective N Points Problem](https://onenote.com/webapp/pages?token=ycmkck1e3miTElCSfT2VbGhg1Lex657vyOyfmNlD701EE3ZQD2q-SKtFbFng8lOOwTa_m5tngHlxJxtAhFwWU38iB72I_ZhS0&id=636596632608497895)
+* [Optical Flow and Feature Tracking](https://onenote.com/webapp/pages?token=YnZ7hXiscuXMCq0VGxz6TBve3PEiWR-p7TdquG_a50f7Fc13RVJyNm3OF3Ju9BqonDx-cBgIlHoh40JJgTbnmdwRsUM-AkA70&id=636596633282572791)
+* [Vision-based Velocity Estimation](https://onenote.com/webapp/pages?token=N0PGRP6E_z3u43enbeXuKXOOPH4arlqz-FvChRHStU6B74jt0R1IlyJUJEte9LZsb-Www7XzOupSRHTNLcKqjspZn3EJ08AX0&id=636596633659952379)
+* [Extend Kalman Filter](https://onenote.com/webapp/pages?token=Jcdx-FaWIbaxtKcLiOtszNan6p9cjoPxCgq-OE33hrwNysNS3FQjVMtwXzpeTpGtyu0-C0dL0QObLckTvuMaH-Rbit5ijGYH0&id=636596634171384977)
+* [Comparison between EKF, UKF and PF](https://onenote.com/webapp/pages?token=2W6JQWqSyvIaHGd96X4oW9TEd_GEcQkspMNWYjw5a_FyzIv0JEzj3R2Cs4UDzJLp600UnUWDPjWp8AhGB-51nLn6HKKDQ2fO0&id=636596634616564245)
