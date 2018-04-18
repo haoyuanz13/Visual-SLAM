@@ -4,7 +4,10 @@ This package implements the Visual Inertial Odometry to estimate the states of a
 
 Experiment Environment
 ----------------------
-All practical experiments and data collections are completed in an indoor environment (GRASP Lab), moreover, in order to detect good features, we use _April Tags Map_ on the floor to help the estimation. 
+All practical experiments and data collections are completed in an indoor environment (GRASP Lab), moreover, in order to detect good features, we use _April Tags Map_ on the floor to help the estimation. Below shows the map, since we know the size of each Tag and the arranged position, such that we can obtain the 3D position of each corner.
+<div align=center>
+  <img width="600" height="720" src="./docs/AprilTagsMap.png", alt="April Tags map">
+</div>
 
 Data
 ----
