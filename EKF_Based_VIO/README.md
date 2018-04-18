@@ -71,6 +71,6 @@ All experiment results are stored in the folder **res**, below show several test
 
 Below table shows the overall estimation errors.
 <div align=center>
-  <img width="800" height="400" src="./res/testRes.png", alt="Test results">
+  <img width="960" height="480" src="./res/testRes.png", alt="Test results">
 </div>
 
